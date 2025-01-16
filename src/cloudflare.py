@@ -36,7 +36,7 @@ def create_rule(rule_name, list_ids):
         "description": "Block Ads & Tracking",
         "action": "block",
         "traffic": " or ".join(f'any(dns.domains[*] in ${lst})' for lst in list_ids),
-        "enabled": True,
+        # "enabled": True,
     }
     status, response = cloudflare_gateway_request("POST", endpoint, body=json.dumps(data))
     return response["result"]
